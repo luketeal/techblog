@@ -48,9 +48,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', async (req, res) => {
   if (req.session.logged_in) {
-    req.session.destroy(() => {
+    delData = await req.session.destroy(() => {
       res.status(204).end();
     });
   } else {
