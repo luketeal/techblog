@@ -5,7 +5,7 @@
     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#blog{{blog.id}}">
       <div class="row justify-content-between mt-2">
         <p class="col text-start align-self-center">{{blog.title}}</p> 
-        <p class="col text-end align-self-center">Created on {{blog.date_created}}</p>
+        <p class="col text-end align-self-center">Created on {{format_date blog.date_created}}</p>
       </div>
     </button>
   </div>
@@ -15,7 +15,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="blog{{blog.id}}Label">Modal title</h5>
+          <h5 class="modal-title" id="blog{{blog.id}}Label">Update your post</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form class="blogPost-form">
@@ -42,7 +42,7 @@
   {{/each}}
 
   <!-- New Post Button trigger modal -->
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-3">
     <button type="button" class="btn btn-primary col-sm-4 col-6" data-bs-toggle="modal" data-bs-target="#newPost">
       New Post
     </button>
