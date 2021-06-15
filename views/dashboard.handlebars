@@ -21,11 +21,11 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="postTitle{{blog.id}}" class="form-label">Post Title</label>
-            <input type="text" class="form-control" id="postTitle{{blog.id}}">
+            <input type="text" class="form-control" id="postTitle{{blog.id}}" value="{{blog.title}}">
           </div>
           <div class="mb-3">
             <label for="postContent{{blog.id}}" class="form-label">Content</label>
-            <textarea class="form-control" id="postContent{{blog.id}}" rows="3"></textarea>
+            <textarea class="form-control" id="postContent{{blog.id}}" rows="3">{{blog.content}}</textarea>
           </div>
         </div>
         <div class="modal-footer">
