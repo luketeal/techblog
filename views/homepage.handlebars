@@ -7,7 +7,7 @@
         <h2 class="col">
           {{blog.title}} 
         </h2>
-        <span class="col text-end fw-lighter fst-italic">by {{blog.user.name}} on {{blog.date_created}}</span>
+        <span class="col text-end fw-lighter fst-italic">by {{blog.user.name}} on {{format_date blog.date_created}}</span>
       </div>
       <div>
         <p>
