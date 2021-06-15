@@ -17,6 +17,27 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.put('/', withAuth, async (req, res) => {
+  try {
+    console.log(req.body)
+    const udpateBlogPost = await BlogPost.update({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
+    },
+    {
+      where: {
+        id: req.body.id,
+      },
+    }
+    );
+    
+    res.status(200).json(udpateBlogPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post('/:id', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({

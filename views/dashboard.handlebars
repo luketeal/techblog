@@ -1,17 +1,46 @@
 <p>dashboard-handlebars</p>
-<!-- Loop over each object in the projects array -->
+<!-- Loop over each object in the blogPosts array -->
 {{#each blogPosts as |blog| }}
 <div class="row mb-4">
   <div class="col-md-5">
-    <h2>
-      <a href="/editPost/{{blog.id}}">{{blog.title}}</a>
-    </h2>
-    <p>Created on {{blog.date_created}}</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#blog{{blog.id}}">
+      {{blog.title}} Created on {{blog.date_created}}
+    </button>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="blog{{blog.id}}" tabindex="-1" aria-labelledby="blog{{blog.id}}Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="blog{{blog.id}}Label">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="blogPost-form">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="postTitle{{blog.id}}" class="form-label">Post Title</label>
+            <input type="text" class="form-control" id="postTitle{{blog.id}}">
+          </div>
+          <div class="mb-3">
+            <label for="postContent{{blog.id}}" class="form-label">Content</label>
+            <textarea class="form-control" id="postContent{{blog.id}}" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary deleteButton" data-id={{blog.id}}>Delete</button>
+          <button type="button" class="btn btn-primary updateButton" data-id={{blog.id}}>Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 {{/each}}
 
-<!-- Button trigger modal -->
+<!-- New Post Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPost">
   New Post
 </button>
