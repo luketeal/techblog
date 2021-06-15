@@ -71,10 +71,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [{ model: BlogPost }],
     });
 
-    const user = userData.get({ plain: true });
+    const userPosts = userData.get({ plain: true });
+    console.log(userPosts)
 
     res.render('dashboard', {
-      ...user,
+      ...userPosts,
       logged_in: true
     });
   } catch (err) {
