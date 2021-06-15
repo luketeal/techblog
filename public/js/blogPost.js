@@ -49,22 +49,19 @@ const blogDeleteHandler = async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute('data-id')
   console.log(`you are going to delete post ${id}`)
-  // const title = document.querySelector('#postTitle').value.trim();
-  // const content = document.querySelector('#postContent').value.trim();
+  
+    const response = await fetch(`/api/blogPost/`, {
+      method: 'DELETE',
+      body: JSON.stringify({ id }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  // if (title && content) {
-  //   const response = await fetch(`/api/blogPost/`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({ title, content }),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   });
-
-  //   if (response.ok) {
-  //     document.location.reload();
-  //   } else {
-  //     alert(response.statusText);
-  //   }
-  // }
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  
 };
   
 document
