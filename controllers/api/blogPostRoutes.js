@@ -1,15 +1,18 @@
 const router = require('express').Router();
-const { BlogPost } = require('../../models');
+const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/:id', withAuth, async (req, res) => {
   try {
-    const newProject = await Project.create({
-      ...req.body,
+    console.log(req.body)
+    const newComment = await Comment.create({
+      content: req.body.comment,
       user_id: req.session.user_id,
+      blog_id: req.params.id,
     });
 
-    res.status(200).json(newProject);
+
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -17,19 +20,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const projectData = await Project.destroy({
+    const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
 
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+    if (!commentData) {
+      res.status(404).json({ message: 'No comment found with this id!' });
       return;
     }
 
-    res.status(200).json(projectData);
+    res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
   }
