@@ -1,16 +1,17 @@
-<p>{{blog.title}} by {{blog.user.name}} on {{blog.date_created}}</p>
-<p>{{blog.content}}</p>
-<p>this blog id is {{blog.id}}</p>
+<h2 class="m-2">{{blog.title}}</h2> 
+<p class="m-2 fst-italic">by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+<p class="m-2">{{blog.content}}</p>
+<hr class="m-2">
 
-<h2>Comments</h2>
+<h2 class="m-2">Comments</h2>
 <!-- Loop over each comment in the blog.comments array -->
 {{#each blog.comments as |comment|}}
-<p>{{comment.content}}</p>
-<p>commented on {{comment.date_created}}</p>
-<p>by {{comment.user.name}}</p>
+<p class="m-2">{{comment.content}}</p>
+<p class="m-2 fst-italic">by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+<hr class="m-2">
 {{/each}}
 
-<form class="comment-form" data-id={{blog.id}}>
+<form class="comment-form m-2" data-id={{blog.id}}>
   <div class="mb-3">
     <label for="addComment" class="form-label">Add a Comment</label>
     <textarea class="form-control" id="addComment" rows="3"></textarea>
