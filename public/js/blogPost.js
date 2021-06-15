@@ -4,7 +4,7 @@ console.log(postButtons)
 
 const blogPostFormHandler = async (event) => {
     event.preventDefault();
-    console.log('you clicked submit')
+
     const title = document.querySelector('#postTitle').value.trim();
     const content = document.querySelector('#postContent').value.trim();
   
@@ -26,7 +26,7 @@ const blogPostFormHandler = async (event) => {
 const blogUpdateFormHandler = async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute('data-id')
-  console.log(`you clicked submit on the update form id ${id}`)
+
   const title = document.querySelector(`#postTitle${id}`).value.trim();
   const content = document.querySelector(`#postContent${id}`).value.trim();
 
@@ -48,7 +48,6 @@ const blogUpdateFormHandler = async (event) => {
 const blogDeleteHandler = async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute('data-id')
-  console.log(`you are going to delete post ${id}`)
   
     const response = await fetch(`/api/blogPost/`, {
       method: 'DELETE',
